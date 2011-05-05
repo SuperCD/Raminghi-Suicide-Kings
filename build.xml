@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Suicide Kings Manager" default="copy_all" basedir=".">
+        <property name="src"   value="."/>
+        <property name="site"  value="../Joomla 1.5 Source/components/com_skmanager" />
+        <property name="admin"  value="../Joomla 1.5 Source/administrator/components/com_skmanager" />
+        
+        <fileset dir="./site" id="component_files">
+                <include name="**" />
+        </fileset>
+        <fileset dir="./admin" id="admin_files">
+                <include name="**" />
+        </fileset>
+        
+        
+        <target name="copy_all" description="Copies files to test project.">
+                <echo message="Running build.xml. Copying files from dev to test..." />
+                <copy todir="${site}">
+                        <fileset refid="component_files" />
+                </copy>
+
+                <copy todir="${admin}">
+                        <fileset refid="admin_files" />
+                </copy>
+
+                <copy file="${src}/skmanager.xml" todir="${admin}"/>
+        </target>
+</project>
