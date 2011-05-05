@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+		<param name="phpraider_db_driver" type="list" label="phpRaider Database Driver" description="Driver del server di database di supporto per phpRaider.">
+			<option value="mysql">MySQL</option>
+		</param>
+		<param name="phpraider_db_host" type="text" label="phpRaider Database Hostname" description="Nome host del database di supporto per phpRaider." />
+		<param name="phpraider_db_dbname" type="text" label="phpRaider Database Nome" description="Nome del database di supporto per phpRaider." />
+		<param name="phpraider_db_tablesprefix" type="text" label="phpRaider Database Prefisso Tabelle" description="Prefisso del nome tabelle del database di supporto per phpRaider." />
+		<param name="phpraider_db_username" type="text" label="phpRaider Database Username" description="Nome utente per l'accesso al database di supporto per phpRaider." />
+		<param name="phpraider_db_password" type="password" label="phpRaider Database Password" description="Password utente per l'accesso al database di supporto per phpRaider." />
+	</params>
+</config>
