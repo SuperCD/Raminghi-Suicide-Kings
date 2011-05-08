@@ -1,15 +1,5 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
-
-// Menu generico per tutte le sezioni
-JToolBarHelper::title( JText::_( 'Suicide Kings Manager' ), 'generic.png' );
-JToolBarHelper::deleteList();
-JToolBarHelper :: custom( 'suicide', 'iconname.png', 'iconname.png', 'Suicide', false, false );
-JToolBarHelper :: custom( 'import', 'iconname.png', 'iconname.png', 'Importa giocatori', false, false );
-JToolBarHelper :: custom( 'raids', 'iconname.png', 'iconname.png', 'Gestione Raid', false, false ); 
-JToolBarHelper::editListX();
-JToolBarHelper::addNewX();
-JToolBarHelper::preferences('com_skmanager', 320);
 ?>
 <form action="index.php" method="post" name="adminForm">
 <div id="editcell">

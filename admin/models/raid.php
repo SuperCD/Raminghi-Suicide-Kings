@@ -4,6 +4,8 @@ defined('_JEXEC') or die();
  
 jimport( 'joomla.application.component.model' );
 
+require_once( JPATH_COMPONENT.DS.'utility.php' );
+
 class SKManagersModelRaid extends JModel
 {
 
@@ -24,7 +26,6 @@ class SKManagersModelRaid extends JModel
 	
 	
 	function importRaid ($raidID) {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$boolresult = True;
 		$db =& JFactory::getDBO();
 		$raiderdb =& SKManagerUtilities::getRaiderDB();
@@ -64,7 +65,6 @@ class SKManagersModelRaid extends JModel
 	}
 	
 	function ignoreRaid() {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
         $cids = JRequest::getVar( 'rid', array(0), 'post', 'array' );		
 		$db =& JFactory::getDBO();
 		$raiderdb =& SKManagerUtilities::getRaiderDB();
@@ -81,7 +81,7 @@ class SKManagersModelRaid extends JModel
 	}	
 	
 	function getToImportList() {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
+		
 		$db =& JFactory::getDBO();
 		$raiderdb =& SKManagerUtilities::getRaiderDB();
 		
@@ -97,7 +97,6 @@ class SKManagersModelRaid extends JModel
 	}	
 
 	function getToImportRaidData() {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$raids = $this->getToImportList();
 		$db =& JFactory::getDBO();
 		$raiderdb =& SKManagerUtilities::getRaiderDB();
@@ -111,7 +110,6 @@ class SKManagersModelRaid extends JModel
 	}
 
 	function getRaidDetails($raidid) {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$db =& JFactory::getDBO();
 		$localQuery = 'SELECT * FROM #__sk_raid WHERE raid_id = '. $raidid;
 		$db->setQuery($localQuery);
@@ -120,7 +118,6 @@ class SKManagersModelRaid extends JModel
 	}		
 	
 	function getRaidPlayedList($raidid) {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$db =& JFactory::getDBO();
 		$localQuery = 'SELECT * FROM #__sk_attendance '.
 		  'INNER JOIN #__sk_player ON #__sk_attendance.profile_id = #__sk_player.profile_id '.
@@ -131,7 +128,6 @@ class SKManagersModelRaid extends JModel
 	}	
 
 	function getRaidSignedList($raidid) {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$db =& JFactory::getDBO();
 		$localQuery = 'SELECT * FROM #__sk_attendance '.
 		  'INNER JOIN #__sk_player ON #__sk_attendance.profile_id = #__sk_player.profile_id '.
@@ -141,7 +137,6 @@ class SKManagersModelRaid extends JModel
 	}
 
 	function getRaidUnaviableList($raidid) {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$db =& JFactory::getDBO();
 		$localQuery = 'SELECT * FROM #__sk_attendance '.
 		  'INNER JOIN #__sk_player ON #__sk_attendance.profile_id = #__sk_player.profile_id '.
@@ -151,7 +146,6 @@ class SKManagersModelRaid extends JModel
 	}
 
 	function getRaidUnsignedList($raidid) {
-		require_once( JPATH_COMPONENT.DS.'utility.php' );
 		$db =& JFactory::getDBO();
 		$localQuery = 'SELECT * FROM #__sk_player WHERE profile_id NOT IN (
 		  SELECT profile_id FROM #__sk_attendance WHERE raid_id = '. $raidid .

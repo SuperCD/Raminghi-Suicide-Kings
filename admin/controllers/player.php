@@ -12,38 +12,37 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 class SKManagersControllerPlayer extends SKManagersController
 {
-	    function __construct()
-        {
-                parent::__construct();
- 
-                // Register Extra tasks
-                $this->registerTask( 'add' , 'edit' );
-        }
-
-        /**
- * display the edit form
- * @return void
- */
-function edit()
-{
-    JRequest::setVar( 'view', 'player' );
-    JRequest::setVar( 'layout', 'form'  );
-    JRequest::setVar('hidemainmenu', 1);
- 
-    parent::display();
-}
-
-function raids()
-{
-	JRequest::setVar( 'controller', 'raids');
-    JRequest::setVar( 'view', 'raids' );
-    JRequest::setVar( 'layout', 'default'); 
-    parent::display();
-}
-
-	function save()
+	public function __construct()
 	{
+		parent::__construct();
+		
+		// Register Extra tasks
+		$this->registerTask( 'add' , 'edit' );
+	}
 
+	/**
+	 * display the edit form
+	 * @return void
+	 */
+	public function edit()
+	{
+		JRequest::setVar( 'view', 'player' );
+		JRequest::setVar( 'layout', 'form'  );
+		JRequest::setVar('hidemainmenu', 1);
+	    	 
+		parent::display();
+	}
+	
+	public function raids()
+	{
+		JRequest::setVar( 'controller', 'raids');
+		JRequest::setVar( 'view', 'raids' );
+		JRequest::setVar( 'layout', 'default'); 
+		parent::display();
+	}
+	
+	public function save()
+	{
 		$model = $this->getModel('player');
 		if ($model->store()) {
 			$msg = 'Modifica effettuata con successo';
@@ -57,45 +56,41 @@ function raids()
 	}
 	
 	/**
- * remove record(s)
- * @return void
- */
-function remove()
-{
-    $model = $this->getModel('player');
-    if(!$model->delete()) {
-        $msg = JText::_( 'Error: Non è stato possibile cancellare uno o più giocatori' );
-    } else {
-        $msg = JText::_( 'Giocatori Cancellati!' );
-    }
- 
-    $this->setRedirect( 'index.php?option=com_skmanager', $msg );
+	 * remove record(s)
+	 * @return void
+	 */
+	public function remove()
+	{
+		$model = $this->getModel('player');
+		if(!$model->delete()) {
+			$msg = JText::_( 'Error: Non è stato possibile cancellare uno o più giocatori' );
+		} else {
+			$msg = JText::_( 'Giocatori Cancellati!' );
+		}
+		
+		$this->setRedirect( 'index.php?option=com_skmanager', $msg );
+	}
+	
+	public function suicide()
+	{
+		$model = $this->getModel('player');
+		if(!$model->suicide()) {
+			$msg = JText::_( 'Error: Non è stato possibile cancellare uno o più giocatori' );
+		} else {
+			$msg = JText::_( 'Giocatori suicidati!' );
+		}
+		
+		$this->setRedirect( 'index.php?option=com_skmanager', $msg );
+	}
+	
+	public function import()
+	{
+		$model = $this->getModel('player');
+		if(!$model->ImportNewPlayers($error)) {
+			$msg = JText::_( 'Error: Non è stato possibile importare uno o più giocatori ('. $error .')' );
+		} else {
+			$msg = JText::_( 'Giocatori importati!' );
+		}
+		$this->setRedirect( 'index.php?option=com_skmanager', $msg );
+	}
 }
-
-function suicide()
-{
-    $model = $this->getModel('player');
-    if(!$model->suicide()) {
-        $msg = JText::_( 'Error: Non è stato possibile cancellare uno o più giocatori' );
-    } else {
-        $msg = JText::_( 'Giocatori suicidati!' );
-    }
- 
-    $this->setRedirect( 'index.php?option=com_skmanager', $msg );
-}
-
-function import()
-{
-    $model = $this->getModel('player');
-    if(!$model->ImportNewPlayers($error)) {
-        $msg = JText::_( 'Error: Non è stato possibile importare uno o più giocatori ('. $error .')' );
-    } else {
-        $msg = JText::_( 'Giocatori importati!' );
-    }
-    $this->setRedirect( 'index.php?option=com_skmanager', $msg );
-}
-  
-
-}
-
-?>

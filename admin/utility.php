@@ -1,14 +1,15 @@
 <?php
 // No direct access
- defined( '_JEXEC' ) or die( 'Restricted access' );
+defined( '_JEXEC' ) or die( 'Restricted access' );
  
 class SKManagerUtilities
 {
 	/**
 	 * Recupera l'istanza di collegamento al database del phpRaider.
-	 * @return mixed istanza di collegamento oppure <strong>JException</strong> se mancano dati/errore.
+	 * @return JDatabase istanza di collegamento oppure.
+	 * @throws JException in caso di mancanza dati e errore di database.
 	 */
-	function getRaiderDB ()
+	function getRaiderDB()
 	{	
 		$params = &JComponentHelper::getParams('com_skmanager');
 		

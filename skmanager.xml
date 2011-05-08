@@ -15,6 +15,17 @@
 		<filename>index.html</filename>
 	</files>
 	
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>
+	
 	<administration>
 		<menu>Suicide Kings</menu>
 		
@@ -44,6 +55,8 @@
 			<filename>controller.php</filename>
 			<filename>skmanager.php</filename>
 			<filename>config.xml</filename>
+			<filename>install.sql</filename>
+			<filename>uninstall.sql</filename>
 		</files> 
 	</administration>
 </install>

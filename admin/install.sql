@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS #__sk_player (
 -- Struttura della tabella 'sk_raid'
 --
 
-DROP TABLE IF EXISTS sk_raid;
+DROP TABLE IF EXISTS #__sk_raid;
 CREATE TABLE IF NOT EXISTS #__sk_raid (
   raid_id int(10) NOT NULL,
   `date` varchar(45) NOT NULL,
